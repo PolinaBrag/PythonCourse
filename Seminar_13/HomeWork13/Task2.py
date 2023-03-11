@@ -1,11 +1,31 @@
+class ProjectAnimalExceptions(Exception):
+    pass
+
+
+class AgeNegativeError(ProjectAnimalExceptions):
+    def __init__(self, *args):
+        if args:
+            self.message = args
+        else:
+            self.message = None
+
+    def __str__(self):
+        if self.message:
+            return f'AgeNegativeError: {self.message}'
+        else:
+            return f'Возраст не может быть отрицательным'
+
 class Animal:
     def __init__(self, name: str, age: int):
         self.name = name
         try:
             self.age = int(age)
+            if self.age < 0:
+                raise AgeNegativeError
         except ValueError as e:
             print('Возраст должен быть числом. Пусть возраст будет 1')
             self.age = 1
+
 
     def get_unique(self):
         pass
@@ -56,6 +76,6 @@ class AnimalCreator:
 
 
 if __name__ == '__main__':
-    b = Bird(True, 'Птенец', 'алл')
+    b = Bird(True, 'Птенец', 5)
     print(b)
 

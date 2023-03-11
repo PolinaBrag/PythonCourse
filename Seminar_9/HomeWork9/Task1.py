@@ -12,4 +12,4 @@ def find_square_root(a: int, b: int, c: int):
         y = (-b - d ** 0.5) / 2 * a
         print(f"Корня два: {x = }, {y = }")
 
-find_square_root(3, -4, 94)
+find_square_root(3.0, -4, 94)
