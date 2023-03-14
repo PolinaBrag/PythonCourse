@@ -5,6 +5,8 @@
 
 def split_file_adress():
     path, type = input("Введите путь к файлу: ").split(".")
+    print(path)
+    print(type)
     name = path.split('\\')[-1]
     path = path.replace(name,'')
     return path, name, type
